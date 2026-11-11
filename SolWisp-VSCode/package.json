@@ -1,0 +1,70 @@
+{
+    "name": "solwisp",
+    "displayName": "SolWisp Language Support",
+    "description": "Language support and execution for SolWisp",
+    "version": "0.0.1",
+    "publisher": "solwisp",
+    "engines": {
+        "vscode": "^1.90.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "activationEvents": [
+        "onLanguage:solwisp"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "languages": [
+            {
+                "id": "solwisp",
+                "aliases": [
+                    "SolWisp",
+                    "solwisp"
+                ],
+                "extensions": [
+                    ".sw"
+                ]
+            }
+        ],
+        "commands": [
+            {
+                "command": "solwisp.run",
+                "title": "Run SolWisp"
+            }
+        ],
+        "menus": {
+            "editor/title": [
+                {
+                    "command": "solwisp.run",
+                    "when": "editorLangId == solwisp",
+                    "group": "navigation",
+                    "alt": "Run SolWisp"
+                }
+            ]
+        },
+        "configuration": {
+            "title": "SolWisp",
+            "properties": {
+                "solwisp.pythonPath": {
+                    "type": "string",
+                    "default": "python",
+                    "description": "Python executable used to run SolWisp."
+                },
+                "solwisp.interpreterPath": {
+                    "type": "string",
+                    "default": "${workspaceFolder}/run.py",
+                    "description": "Path to the SolWisp Python interpreter."
+                }
+            }
+        }
+    },
+    "scripts": {
+        "compile": "tsc -p ./"
+    },
+    "devDependencies": {
+        "@types/node": "^20.19.43",
+        "@types/vscode": "^1.90.0",
+        "typescript": "^5.0.0"
+    }
+}
