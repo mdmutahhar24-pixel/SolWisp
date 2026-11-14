@@ -1,1 +1,1 @@
-Say "Hello"
+Set x to 5
